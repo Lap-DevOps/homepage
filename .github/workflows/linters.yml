@@ -23,7 +23,7 @@ jobs:
         run: npx htmlhint **/*.html
 
       - name: Lint CSS files
-        run: npx stylelint --fix "**/*.css"
+        run: npx stylelint "**/*.css" --fix --config-basedir ./node_modules --config stylelint-config-standard
 
       - name: Lint JavaScript files
         run: npx eslint .
