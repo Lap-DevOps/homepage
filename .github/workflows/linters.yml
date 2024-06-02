@@ -1,0 +1,50 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          npm install htmlhint@latest --save-dev
+          npm install stylelint stylelint-config-standard stylelint-config-standard-scss --save-dev
+          npm install eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise --save-dev
+
+      - name: Lint HTML files
+        run: npx htmlhint **/*.html
+
+      - name: Create temporary Stylelint config file
+        run: |
+          echo '{
+            "extends": "stylelint-config-standard-scss",
+            "rules": {
+                      "selector-class-pattern": null,
+                      "media-feature-range-notation": null }
+              }' > .stylelintrc.json
+
+      - name: Lint CSS files
+        run: npx stylelint "**/*.css" --fix
+
+
+      - name: Create temporary Eslint config file
+        run: |
+          echo 'module.exports = [
+              {
+                rules: {
+                        semi: "error",
+                        "prefer-const": "error"
+                        }
+              }
+              ];' > eslint.config.js
+      - name: Lint JavaScript files
+        run: |
+          npx eslint "**/*.js"

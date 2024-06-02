@@ -226,6 +226,7 @@ body {
 
 .additional-info {
     flex: 1 1 40%;
+    font-size: small;
 }
 
 .additional-info__education {
@@ -238,6 +239,9 @@ body {
     margin-bottom: 20px;
 }
 
+.additional-info__education-university{
+    margin-top: 10px;
+}
 .additional-info__education-university-durability {
     color: var(--durability-text-color);
     text-align: left;
