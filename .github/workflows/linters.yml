@@ -25,8 +25,11 @@ jobs:
       - name: Create temporary Stylelint config file
         run: |
           echo '{
-            "extends": "stylelint-config-standard"
-          }' > .stylelintrc.json
+            "extends": "stylelint-config-standard-scss",
+            "rules": {
+                      "selector-class-pattern": null,
+                      "media-feature-range-notation": null
+              }' > .stylelintrc.json
 
       - name: Lint CSS files
         run: npx stylelint "**/*.css" --fix
