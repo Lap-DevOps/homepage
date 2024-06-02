@@ -28,7 +28,7 @@ jobs:
             "extends": "stylelint-config-standard-scss",
             "rules": {
                       "selector-class-pattern": null,
-                      "media-feature-range-notation": null
+                      "media-feature-range-notation": null }
               }' > .stylelintrc.json
 
       - name: Lint CSS files
