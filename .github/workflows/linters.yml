@@ -36,5 +36,5 @@ jobs:
 
       - name: Run Stylelint
         run: |
-          npx stylelint "**/*.css" --fix --config '{ "extends": "stylelint-config-standard" }'
+          npx eslint "**/*.css" --fix --config '{ "extends": "stylelint-config-standard" }'
 
